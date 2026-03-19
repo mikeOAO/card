@@ -1,0 +1,90 @@
+/* 標題置中 */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 40px;
+}
+
+/* Grid 容器 */
+.grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+
+  /* 預設手機：1 欄 */
+  grid-template-columns: repeat(1, 1fr);
+}
+
+
+/* 全螢幕背景 */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(160deg, #f5f7fa, #e0ebf7);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* 卡片 */
+.card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* 圖片 */
+.card-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* 返回按鈕 */
+.back-container {
+  display: flex;
+  justify-content: center; /* 水平置中 */
+  align-items: center;     /* 垂直置中 */
+  height: 10vh;            /* 容器高度，可調整 */
+}
+
+.back-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 12px;
+  background-color: #d8e3f0;
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #a8c0e0;
+}
+
+/* ===== 響應式設定 ===== */
+
+/* 平板：螢幕 ≥ 768px */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 列 */
+  }
+}
+
+/* 桌機：螢幕 ≥ 1200px */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr); /* 最多 4 列 */
+  }
+}
