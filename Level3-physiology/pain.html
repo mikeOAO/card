@@ -36,6 +36,7 @@
   /* 疼痛程度臉譜區 */
   .pain-level-container {
     display: flex;
+    flex-wrap: wrap; 
     justify-content: center;
     margin-top: 20px;
     gap: 20px;
@@ -46,6 +47,8 @@
     cursor: pointer;
     transition: transform 0.2s, opacity 0.2s;
     opacity: 0.5;
+    flex: 1 1 calc(16.66% - 20px); /* 默認每行最多6個（寬度自動） */
+    max-width: 100px; /* 限制最大寬度 */
   }
 
   .pain-face.selected {
@@ -53,45 +56,57 @@
     opacity: 1;
   }
 
-/* 按鈕 */
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  width: 100%;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  @media (max-width: 1024px) { /* 平板，最多3個/行 */
+    .pain-face {
+      flex: 1 1 calc(33.33% - 20px);
+    }
   }
 
-.btn {
-  flex: 1;
-  padding: 20px;
-  font-size: 20px;
-  margin: 0 10px;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  color: white;
-  transition: transform 0.2s, background-color 0.2s;
+  @media (max-width: 600px) { /* 手機，最多2個/行 */
+    .pain-face {
+      flex: 1 1 calc(50% - 20px);
+    }
   }
 
-.btn-back { background-color: #555; }
-.btn-back:hover { background-color: #333; }
+  /* 按鈕 */
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    }
 
-.btn-home { background-color: #4CAF50; }
-.btn-home:hover { background-color: #388E3C; }
+  .btn {
+    flex: 1;
+    padding: 20px;
+    font-size: 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s, background-color 0.2s;
+    }
 
-/* 懸停放大 */
-.btn:hover {
-  transform: scale(1.05);
-  }
+  .btn-back { background-color: #555; }
+  .btn-back:hover { background-color: #333; }
 
-/* 點擊變色 */
-.btn:active {
-  background-color: #222; 
-  transform: scale(0.95); 
-  }
+  .btn-home { background-color: #4CAF50; }
+  .btn-home:hover { background-color: #388E3C; }
+
+  /* 懸停放大 */
+  .btn:hover {
+    transform: scale(1.05);
+    }
+
+  /* 點擊變色 */
+  .btn:active {
+    background-color: #222; 
+    transform: scale(0.95); 
+    }
 </style>
 </head>
 <body>
@@ -129,13 +144,14 @@
 </svg>
 
 <h1>選擇疼痛程度</h1>
-<!-- 疼痛程度選擇（五個表情） -->
+<!-- 疼痛程度選擇（六個表情） -->
 <div class="pain-level-container">
   <div class="pain-face" data-level="不痛" onclick="selectPainLevel(this)">😄</div>
   <div class="pain-face" data-level="輕微" onclick="selectPainLevel(this)">🙂</div>
   <div class="pain-face" data-level="中等" onclick="selectPainLevel(this)">😐</div>
   <div class="pain-face" data-level="強" onclick="selectPainLevel(this)">😣</div>
   <div class="pain-face" data-level="極痛" onclick="selectPainLevel(this)">😫</div>
+  <div class="pain-face" data-level="無法忍受" onclick="selectPainLevel(this)">😭</div>
 </div>
 
 <!-- 按鈕區 -->
