@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表達心情</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="Shortcut icon" href="../logo.ico" type="image/x-icon"/>
+  <style>
+    .emotion-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      justify-items: center;
+      margin-top: 30px;
+      font-size: 80px;
+      cursor: pointer;
+    }
+    .emotion {
+      transition: transform 0.2s, opacity 0.2s;
+      opacity: 0.5;
+    }
+    .emotion.selected {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    .button-container {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    /* 手機螢幕時，每行顯示 2 個表情 */
+    @media (max-width: 600px) {
+    .emotion-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px; /* 可依需求調整間距 */
+    }
+   .emotion {
+    font-size: 40px; /* 手機上稍微縮小表情 */
+    }
+}
+  </style>
+</head>
+<body>
+
+<h1>表達心情</h1>
+
+<!-- 情緒選擇表情 8 個 -->
+<div class="emotion-container">
+  <div class="emotion" data-emotion="開心" onclick="selectEmotion(this)">😄</div>
+  <div class="emotion" data-emotion="平靜" onclick="selectEmotion(this)">🙂</div>
+  <div class="emotion" data-emotion="中立" onclick="selectEmotion(this)">😐</div>
+  <div class="emotion" data-emotion="難過" onclick="selectEmotion(this)">😣</div>
+  <div class="emotion" data-emotion="生氣" onclick="selectEmotion(this)">😡</div>
+  <div class="emotion" data-emotion="驚訝" onclick="selectEmotion(this)">😲</div>
+  <div class="emotion" data-emotion="疲倦" onclick="selectEmotion(this)">😴</div>
+  <div class="emotion" data-emotion="困惑" onclick="selectEmotion(this)">😕</div>
+</div>
+
+<!-- 按鈕區 -->
+<div class="button-container">
+  <button class="btn btn-back" onclick="history.back()">返回上一頁</button>
+  <button class="btn btn-home" onclick="window.location.href='../index.html'">返回首頁</button>
+</div>
+
+<script>
+function selectEmotion(elem){
+  if(elem.classList.contains('selected')){
+    // 已選中，再點一次取消選中
+    elem.classList.remove('selected');
+    console.log("取消選擇情緒:", elem.dataset.emotion);
+  } else {
+    // 移除其他已選擇
+    document.querySelectorAll('.emotion').forEach(e => e.classList.remove('selected'));
+    // 加上當前選擇
+    elem.classList.add('selected');
+    console.log("選擇情緒:", elem.dataset.emotion);
+  }
+}
+</script>
+
+</body>
+</html>
