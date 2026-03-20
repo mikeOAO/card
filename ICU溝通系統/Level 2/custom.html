@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自訂 / 補充</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="Shortcut icon" href="/logo.ico" type="image/x-icon"/>
+  <style>
+    .input-container {
+      margin: 20px auto;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 16px;
+      resize: vertical;
+    }
+    .common-sentences {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .common-sentence {
+      padding: 8px 12px;
+      background-color: #eee;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .common-sentence.selected {
+      background-color: #87cefa;
+      color: #fff;
+    }
+    .button-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>自訂 / 補充</h1>
+
+<!-- 輸入框 -->
+<div class="input-container">
+  <label for="customInput">請輸入您想說的話：</label>
+  <textarea id="customInput" placeholder="在這裡輸入..."></textarea>
+</div>
+
+<!-- 常用句選擇 -->
+<div class="common-sentences">
+  <div class="common-sentence" onclick="selectSentence(this)">您好，請問需要協助嗎？</div>
+  <div class="common-sentence" onclick="selectSentence(this)">請稍等，我馬上幫您處理。</div>
+  <div class="common-sentence" onclick="selectSentence(this)">需要我幫忙拿東西嗎？</div>
+  <div class="common-sentence" onclick="selectSentence(this)">請跟我說您現在的感覺。</div>
+</div>
+
+<!-- 返回首頁按鈕 -->
+<div class="button-container">
+  <button class="btn btn-home" onclick="window.location.href='/index.html'">返回首頁</button>
+</div>
+
+<script>
+function selectSentence(elem){
+  const input = document.getElementById('customInput');
+  
+  if(elem.classList.contains('selected')){
+    // 已選中，再點一次取消選中
+    elem.classList.remove('selected');
+    input.value = ""; // 清空輸入框
+  } else {
+    // 移除其他已選擇
+    document.querySelectorAll('.common-sentence').forEach(e => e.classList.remove('selected'));
+    // 加上當前選擇
+    elem.classList.add('selected');
+    // 將文字填入輸入框
+    input.value = elem.textContent;
+  }
+}
+</script>
+
+</body>
+</html>
