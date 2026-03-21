@@ -114,11 +114,9 @@ h1 {
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
   width: 100%;
   max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 30px auto 0;
   }
 
 .btn {
