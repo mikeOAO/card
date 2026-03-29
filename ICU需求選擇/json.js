@@ -1,5 +1,6 @@
-// 點擊卡片選中 / 再點取消
-function toggleSelect(card){
+// 點擊卡片選中和再點取消
+function toggleSelect(event,card){
+  event.preventDefault();
   card.classList.toggle('selected');
   if(card.classList.contains('selected')){
     card.style.border = "3px solid #4CAF50";
