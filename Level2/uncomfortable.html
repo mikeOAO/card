@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="Shortcut icon" href="../logo.ico" type="image/x-icon"/>
+<title>疼痛</title>
+<style>
+  body {
+    text-align: center;
+    font-family: sans-serif;
+    padding: 20px;
+  }
+
+  svg {
+    width: 300px;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .body-part {
+    fill: #ccc;
+    stroke: #555;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: fill 0.2s;
+  }
+
+  text {
+    font-size: 25px;
+    text-anchor: middle;
+    fill: #333;
+    pointer-events: none;
+  }
+
+  /* 疼痛程度臉譜區 */
+  .pain-level-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+  }
+
+  .pain-face {
+    font-size: 80px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0.5;
+    flex: 1 1 calc(16.66% - 20px); /* 默認每行最多6個（寬度自動） */
+    max-width: 100px; /* 限制最大寬度 */
+  }
+
+  .pain-face.selected {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  @media (max-width: 1024px) { /* 平板，最多3個/行 */
+    .pain-face {
+      flex: 1 1 calc(33.33% - 20px);
+    }
+  }
+
+  @media (max-width: 600px) { /* 手機，最多2個/行 */
+    .pain-face {
+      flex: 1 1 calc(50% - 20px);
+    }
+  }
+
+  /* 按鈕 */
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+  .btn {
+    flex: 1;
+    padding: 20px;
+    font-size: 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s, background-color 0.2s;
+    }
+
+  .btn-back { background-color: #555; }
+  .btn-back:hover { background-color: #333; }
+
+  .btn-home { background-color: #4CAF50; }
+  .btn-home:hover { background-color: #388E3C; }
+
+  /* 懸停放大 */
+  .btn:hover {
+    transform: scale(1.05);
+    }
+
+  /* 點擊變色 */
+  .btn:active {
+    background-color: #222; 
+    transform: scale(0.95); 
+    }
+</style>
+</head>
+<body>
+
+<h1>選擇疼痛部位</h1>
+
+<svg viewBox="0 0 300 800">
+
+  <!-- 頭 -->
+  <path class="body-part" d="M150,15 a75,75 0 1,0 0,150 a75,75 0 1,0 0,-150"
+        onclick="goPage('../Level3-uncomfortable/head.html')"/>
+  <text x="150" y="100">頭</text>
+
+  <!-- 脖子 -->
+  <rect class="body-part" x="110" y="165" width="80" height="40"
+        onclick="goPage('../Level3-uncomfortable/neck.html')"/>
+  <text x="150" y="195">脖子</text>
+
+  <!-- 胸 -->
+  <rect class="body-part" x="75" y="205" width="150" height="185"
+        onclick="goPage('../Level3-uncomfortable/chest.html')"/>
+  <text x="150" y="300">胸</text>
+
+  <!-- 腹部 -->
+  <rect class="body-part" x="75" y="390" width="150" height="140"
+        onclick="goPage('../Level3-uncomfortable/abdomen.html')"/>
+  <text x="150" y="460">腹部</text>
+
+  <!-- 會陰 -->
+  <rect class="body-part" x="120" y="530" width="60" height="40"
+        onclick="goPage('../Level3-uncomfortable/perineum.html')"/>
+  <text x="150" y="555">會陰</text>
+
+  <!-- 左手 -->
+  <rect class="body-part" x="0" y="205" width="75" height="225"
+        onclick="goPage('../Level3-uncomfortable/left-arm.html')"/>
+  <text x="37" y="300">左手</text>
+
+  <!-- 右手 -->
+  <rect class="body-part" x="225" y="205" width="75" height="225"
+        onclick="goPage('../Level3-uncomfortable/right-arm.html')"/>
+  <text x="262" y="300">右手</text>
+
+  <!-- 左腿 -->
+  <rect class="body-part" x="60" y="530" width="60" height="225"
+        onclick="goPage('../Level3-uncomfortable/left-leg.html')"/>
+  <text x="90" y="650">左腿</text>
+
+  <!-- 右腿 -->
+  <rect class="body-part" x="180" y="530" width="60" height="225"
+        onclick="goPage('../Level3-uncomfortable/right-leg.html')"/>
+  <text x="210" y="650">右腿</text>
+
+</svg>
+
+<!-- 按鈕區 -->
+<br>
+<div class="button-container">
+  <button class="btn btn-home" onclick="window.location.href='../index.html'">返回首頁</button>
+</div>
+
+<script>
+
+function goPage(page){
+  window.location.href = page;
+}
+
+</script>
+
+</body>
+</html>

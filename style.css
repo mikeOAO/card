@@ -106,7 +106,7 @@ h1 {
 /* 桌機：螢幕 ≥ 1200px 預設4列 */
 @media (min-width: 1200px) {
   .grid {
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(3, 1fr); 
   }
 }
 
