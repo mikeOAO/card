@@ -7,20 +7,28 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="Shortcut icon" href="../logo.ico" type="image/x-icon"/>
   <script src="../json.js"></script>
+
+  <style>
+    .time-text {
+      display: block;
+      font-size: 40px;
+    }
+  </style>
 </head>
 
-<body>
-
+<body> 
 
 <div class="grid">
   <a href="#" class="card" onclick="toggleSelect(event,this)">
     <img src="../img/info1.png" class="card-img">
-    <p>現在幾點</p>
+    <p id="current-time" class="time-text"></p>
   </a>
+
   <a href="#" class="card" onclick="toggleSelect(event,this)">
     <img src="../img/info2.png" class="card-img">
     <p>我在哪裡</p>
   </a>
+
   <a href="#" class="card" onclick="toggleSelect(event,this)">
     <img src="../img/info3.png" class="card-img">
     <p>今天要做甚麼</p>
@@ -30,6 +38,28 @@
 <div class="button-container">
   <button class="btn btn-home" onclick="window.location.href='../index.html'">返回首頁</button>
 </div>
+
+<script>
+function updateTime() {
+  const now = new Date();
+
+  let hours = now.getHours();
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+
+  const period = hours >= 12 ? '下午' : '上午';
+  hours = hours % 12 || 12;
+
+  const timeString = `${period} ${hours}:${minutes}`;
+
+  document.getElementById("current-time").textContent = timeString;
+}
+
+// 每秒更新
+setInterval(updateTime, 1000);
+
+// 初始化
+updateTime();
+</script>
 
 </body>
 </html>
