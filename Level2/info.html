@@ -19,14 +19,14 @@
 <body> 
 
 <div class="grid">
-  <a href="#" class="card" onclick="toggleSelect(event,this)">
+  <a href="#" class="card" onclick="toggleSelect(event,this); startTime(event,this)">
     <img src="../img/info1.png" class="card-img">
-    <p id="current-time" class="time-text"></p>
+    <p id="current-time" class="time-text">現在幾點</p>
   </a>
 
-  <a href="#" class="card" onclick="toggleSelect(event,this)">
+  <a href="#" class="card" onclick="changeText(event,this);toggleSelect(event,this)">
     <img src="../img/info2.png" class="card-img">
-    <p>我在哪裡</p>
+    <p class="location-text">我在哪裡</p>
   </a>
 
   <a href="#" class="card" onclick="toggleSelect(event,this)">
@@ -54,11 +54,44 @@ function updateTime() {
   document.getElementById("current-time").textContent = timeString;
 }
 
-// 每秒更新
-setInterval(updateTime, 1000);
+let timerStarted = false;
+let timer = null;
 
-// 初始化
-updateTime();
+function startTime(event, element) {
+  event.preventDefault();
+
+  const text = document.getElementById("current-time");
+
+  if (!timerStarted) {
+    // 開始顯示時間
+    timerStarted = true;
+
+    updateTime();
+    timer = setInterval(updateTime, 1000);
+
+  } else {
+    // 取消 → 停止時間，恢復文字x
+    timerStarted = false;
+
+    clearInterval(timer);
+    timer = null;
+
+    text.textContent = "現在幾點";
+  }
+}
+
+function changeText(event, element) {
+  event.preventDefault();
+
+  const text = element.querySelector(".location-text");
+
+  if (text.textContent === "我在哪裡") {
+    text.textContent = "加護病房";
+  } else {
+    text.textContent = "我在哪裡";
+  }
+}
+
 </script>
 
 </body>
