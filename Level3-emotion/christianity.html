@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style.css">
+  <link rel="Shortcut icon" href="../logo.ico" type="image/x-icon"/>
+  <title>基督教</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #f5f5f5;
+      margin: 0;
+    }
+
+    .box {
+      background: white;
+      padding: 18px 30px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 380px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .cross-img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      margin: 10px auto 20px;
+      display: block;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+    }
+
+    .verse {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="box">
+
+    <img class="cross-img" src="../img/cross.png" alt="十字架">
+
+  </div>
+
+  <div class="button-container">
+    <button class="btn btn-back" onclick="history.back()">返回上一頁</button>
+    <button class="btn btn-home" onclick="window.location.href='../index.html'">返回首頁</button>
+  </div>
+
+</body>
+</html>

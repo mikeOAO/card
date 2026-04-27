@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style.css">
+  <link rel="Shortcut icon" href="../logo.ico" type="image/x-icon"/>
+  <title>佛教</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #f5f5f5;
+      margin: 0;
+    }
+
+    .box {
+      background: white;
+      padding: 18px 30px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 380px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: #d4a017;
+      letter-spacing: 4px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .buddha-text {
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 1.8;
+      color: #444;
+      margin: 20px 0;
+    }
+
+    .music-btn {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #4CAF50;
+      color: white;
+      margin-top: 15px;
+    }
+
+    .music-btn:hover {
+      background: #45a049;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="box">
+
+    <div class="buddha-text">
+      南無阿彌陀佛<br>
+      南無阿彌陀佛<br>
+      南無阿彌陀佛
+    </div>
+
+    <button class="music-btn" onclick="toggleMusic()">播放 / 暫停</button>
+
+    <audio id="buddhaMusic" loop>
+      <source src="../amitofor.mp3" type="audio/mpeg">
+      您的瀏覽器不支援音樂播放。
+    </audio>
+  </div>
+
+  <div class="button-container">
+    <button class="btn btn-back" onclick="history.back()">返回上一頁</button>
+    <button class="btn btn-home" onclick="window.location.href='../index.html'">返回首頁</button>
+  </div>
+
+  <script>
+    const music = document.getElementById('buddhaMusic');
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+  </script>
+
+</body>
+</html>
